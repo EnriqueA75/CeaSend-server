@@ -10,11 +10,11 @@ exports.nuevoEnlace = async (req, res, next) => {
         return res.status(400).json({errores: errores.array()})
     }
 
-    const { nombre_original, password } = req.body
+    const { nombre_original, password, nombre } = req.body
     //crea el objeto enlace
     const enlace = new Enlaces()
     enlace.url = nanoid()
-    enlace.nombre = nanoid()
+    enlace.nombre = nombre
     enlace.nombre_original = nombre_original
     //si el usuario está autenticado
     if(req.usuario){

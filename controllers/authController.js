@@ -16,7 +16,6 @@ exports.autenticarUsuario = async (req, res, next) => {
     const usuario = await Usuario.findOne({email})
     if(!usuario){
         return res.status(401).json({msg: 'Usuario no registrado'})
-        return next()
     }
     //si el usuario existe
     if(bcrypt.compareSync(password, usuario.password)){
